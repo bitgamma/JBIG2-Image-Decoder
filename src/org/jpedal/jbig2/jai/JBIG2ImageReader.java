@@ -217,7 +217,7 @@ public class JBIG2ImageReader extends ImageReader {
 		return null;
 	}
 
-	public Iterator getImageTypes(int imageIndex) throws IOException {
+	public Iterator<ImageTypeSpecifier> getImageTypes(int imageIndex) throws IOException {
 		readFile();
 
 		checkIndex(imageIndex);
@@ -228,7 +228,7 @@ public class JBIG2ImageReader extends ImageReader {
 		// to return an appropriate BufferedImage that contains the decoded
 		// image, and is accessed by an application.
 
-		List l = new ArrayList();
+		List<ImageTypeSpecifier> l = new ArrayList<ImageTypeSpecifier>();
 
 		// The JBIG2 reader only uses a single List entry. This entry describes
 		// a

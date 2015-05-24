@@ -50,6 +50,8 @@
 package org.jpedal.jbig2;
 
 public class JBIG2Exception extends Exception {
+	private static final long serialVersionUID = 43839065211316066L;
+
 	public JBIG2Exception(Exception ex) {
 		super(ex);
 	}
