@@ -1,0 +1,49 @@
+plugins {
+  id "com.jfrog.bintray" version "1.2"
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'com.briksoftware'
+version = '1.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.4'
+}
+
+task sourceJar(type: Jar) {
+  from sourceSets.main.allSource
+  classifier = 'sources'
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+  classifier = 'javadoc'
+  from javadoc.destinationDir
+}
+
+artifacts {
+  archives sourceJar
+  archives javadocJar
+}
+
+bintray {
+  user = bintray_user
+  key = bintray_api_key
+
+  configurations = ['archives']
+  pkg {
+    repo = 'maven'
+    name = 'jbig2-image-decoder'
+    publish = true
+    publicDownloadNumbers = true
+    version {
+      gpg {
+        sign = true
+        passphrase = bintray_gpg_password
+      }
+    }
+  }
+}

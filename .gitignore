@@ -1,3 +1,2 @@
-/build
-/bin/
-/jbig2.jar
+build/
+.gradle/
